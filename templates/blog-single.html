@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div class="main-content paddsection">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-md-offset-2">
+        <div class="row">
+          <div class="container-main single-main">
+            <div class="col-md-12">
+              <div class="block-main mb-30">
+                <img src="{{ blog.image.url }}" class="img-responsive" alt="reviews2">
+                <div class="content-main single-post padDiv">
+                  <div class="journal-txt">
+                    <h4><a href="{% url 'single' blog.slug %}">{{ blog.title }}</a></h4>
+                  </div>
+                  <div class="post-meta">
+                    <ul class="list-unstyled mb-0">
+                      <li class="author">By:<a href="{% url 'single' blog.slug %}">{{ user.get_full_name }}</a></li>
+                      <li class="date">Date:<a href="{% url 'single' blog.slug %}">{{ blog.created_at|date }}</a></li>
+                    </ul>
+                  </div>
+                  <p class="mb-30">{{ blog.description }}</p>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-12">
+              <div class="comments text-left padDiv mb-30">
+                <div class="entry-comments">
+                  <h6 class="mb-30">{{ blog.comment_set.count }} Comments</h6>
+                  <ul class="entry-comments-list list-unstyled">
+                    <li>
+                      {% for comment in comments %}
+                      <div class="entry-comments-item">
+                        <img src="{{ comment.user.profile_photo.url }}" class="entry-comments-avatar"
+                          alt="Image placeholder">
+                        <div class="entry-comments-body">
+                          <span class="entry-comments-author">{{ comment.user.get_full_name }}</span>
+                          <span><a href="{% url 'single' blog.slug %}">{{ comment.created_at }}</a></span>
+                          <p class="mb-10">{{ comment.comment }}</p>
+                          <a class="rep" href="{% url 'single' blog.slug %}">Reply</a>
+                        </div>
+                      </div>
+                      {% endfor %}
+                    </li>
+                    <li>
+                    </li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+            <div class="col-lg-12">
+              <div class="cmt padDiv">
+                <form id="comment-form" method="post" role="form">
+
+                  {% csrf_token %}
+                  
+                  <div class="row">
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <input id="form_name" type="text" name="name" class="form-control" placeholder="Name *"
+                          required="required">
+                      </div>
+                    </div>
+                    <div class="col-lg-6">
+                      <div class="form-group">
+                        <input id="form_email" type="email" name="email" class="form-control" placeholder="email *"
+                          required="required">
+                      </div>
+                    </div>
+                    <div class="col-md-12">
+                      <div class="form-group">
+                        <input id="form_name" type="text" name="website" class="form-control" placeholder="Website">
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <div class="form-group">
+                        <textarea id="form_message" name="comment" class="form-control" placeholder="Message *"
+                          style="height: 200px;" required="required"></textarea>
+                      </div>
+                    </div>
+                    <div class="col-lg-12">
+                      <input type="submit" class="btn btn-defeault btn-send" value="Send message">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

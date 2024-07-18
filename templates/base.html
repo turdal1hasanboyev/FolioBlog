@@ -1,0 +1,96 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Folio Blog Site by EduVector!</title>
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+    <link
+        href="https://fonts.googleapis.com/css?family=Poppins:300,300i,400,400i,500,500i,600,600i,700,700i|Playfair+Display:400,400i,700,700i,900,900i"
+        rel="stylesheet">
+
+    <link href="{% static '' %}lib/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <link href="{% static '' %}lib/ionicons/css/ionicons.min.css" rel="stylesheet">
+    <link href="{% static '' %}lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
+    <link href="{% static '' %}lib/magnific-popup/magnific-popup.css" rel="stylesheet">
+    <link href="{% static '' %}lib/hover/hover.min.css" rel="stylesheet">
+
+    <link href="{% static '' %}css/style.css" rel="stylesheet">
+
+    <link href="{% static '' %}css/responsive.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="{% static '' %}images/favicon.png">
+
+<body>
+
+    <nav id="main-nav">
+        <div class="row">
+            <div class="container">
+
+                <div class="logo">
+                    <a href="/"><img src="{% static '' %}images/logo.png" alt="logo"></a>
+                </div>
+
+                <div class="responsive"><i data-icon="m" class="ion-navicon-round"></i></div>
+
+                <ul class="nav-menu list-unstyled">
+                    <li><a href="#header" class="smoothScroll">Home</a></li>
+                    <li><a href="#about" class="smoothScroll">About</a></li>
+                    <li><a href="#portfolio" class="smoothScroll">Portfolio</a></li>
+                    <li><a href="#journal" class="smoothScroll">Blog</a></li>
+                    <li><a href="#contact" class="smoothScroll">Contact</a></li>
+                </ul>
+
+            </div>
+        </div>
+    </nav>
+
+    {% block content %}
+
+    {% endblock %}
+
+    <div id="footer" class="text-center">
+        <div class="container">
+            <div class="socials-media text-center">
+
+                <ul class="list-unstyled">
+                    <li><a href="https://www.facebook.com/"><i class="ion-social-facebook"></i></a></li>
+                    <li><a href="https://x.com/"><i class="ion-social-twitter"></i></a></li>
+                    <li><a href="https://www.instagram.com/turdali.hasanboyev.07/"><i class="ion-social-instagram"></i></a></li>
+                    <li><a href="https://www.google.com/"><i class="ion-social-googleplus"></i></a></li>
+                    <li><a href="https://www.tumblr.com/"><i class="ion-social-tumblr"></i></a></li>
+                    <li><a href="https://dribbble.com/"><i class="ion-social-dribbble"></i></a></li>
+                </ul>
+
+            </div>
+
+            <p>&copy; Copyrights Folio. All rights reserved.</p>
+
+            <div class="credits">
+                Designed by <a href="https://t.me/vectorzafar">EduVector!</a>
+            </div>
+
+        </div>
+    </div>
+
+    <script src="{% static '' %}lib/jquery/jquery.min.js"></script>
+    <script src="{% static '' %}lib/jquery/jquery-migrate.min.js"></script>
+    <script src="{% static '' %}lib/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="{% static '' %}lib/typed/typed.js"></script>
+    <script src="{% static '' %}lib/owlcarousel/owl.carousel.min.js"></script>
+    <script src="{% static '' %}lib/magnific-popup/magnific-popup.min.js"></script>
+    <script src="{% static '' %}lib/isotope/isotope.pkgd.min.js"></script>
+
+    <script src="{% static '' %}contactform/contactform.js"></script>
+
+    <script src="{% static '' %}js/main.js"></script>
+
+</body>
+
+</html>

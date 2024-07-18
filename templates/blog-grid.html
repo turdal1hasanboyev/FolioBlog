@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% load static %}
+
+{% block content %}
+
+<div id="journal-blog" class="text-left  paddsections">
+
+  <div class="container">
+    <div class="section-title text-center">
+      <h2>Journal</h2>
+    </div>
+  </div>
+
+  <div class="container">
+    <div class="journal-block">
+      <div class="row">
+        {% for blog in blogs %}
+        <div class="col-lg-4 col-md-6">
+          <div class="journal-info mb-30">
+
+            <a href="{{ blog.get_absolute_url }}"><img src="{{ blog.image.url }}" class="img-responsive" alt="img"></a>
+
+            <div class="journal-txt">
+
+              <h4><a href="{{ blog.get_absolute_url }}">{{ blog.title|slice:"0:25" }}...</a></h4>
+              <p class="separator">{{ blog.description|slice:"0:30" }}...</p>
+            </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock %}
