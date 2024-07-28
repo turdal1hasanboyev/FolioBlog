@@ -1,5 +1,6 @@
 from django.urls import path
-from .views import index, grid, single
+
+from folio.views import index, grid, single
 
 
 urlpatterns = [
