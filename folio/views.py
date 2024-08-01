@@ -5,6 +5,7 @@ from folio.models import Blog, Portfolio, Comment, User, Category, GetInTouch
 
 def index(request):
     user = User.objects.get(id=1)
+    
     blogs = Blog.objects.all().order_by('-id')[:3]
     portfolios = Portfolio.objects.all().order_by('-id')[:6]
     categories = Category.objects.all().order_by('title')
