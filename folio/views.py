@@ -4,11 +4,13 @@ from folio.models import Blog, Portfolio, Comment, User, Category, GetInTouch
 
 
 def index(request):
+    url = request.META.get('HTTP_REFERER')
+
     user = User.objects.get(id=1)
     
-    blogs = Blog.objects.all().order_by('-id')[:3]
-    portfolios = Portfolio.objects.all().order_by('-id')[:6]
-    categories = Category.objects.all().order_by('title')
+    blogs = Blog.objects.all()
+    portfolios = Portfolio.objects.all()
+    categories = Category.objects.all()
 
     if request.method == "POST":
         name = request.POST.get("name")
@@ -23,13 +25,13 @@ def index(request):
             message=message,
         )
 
-        return redirect('/')
+        return redirect(url)
     
     context = {
         'user': user,
-        'blogs': blogs,
-        'portfolios': portfolios,
-        "categories": categories,
+        'blogs': blogs.order_by('-id')[:3],
+        'portfolios': portfolios.order_by('-id')[:6],
+        "categories": categories.order_by('title'),
     }
 
     return render(request, 'index.html', context)
@@ -43,15 +45,15 @@ def single(request, slug):
         name = request.POST.get("name")
         email = request.POST.get("email")
         comment = request.POST.get("comment")
-        website = request.POST.get("website")
+        web_site = request.POST.get("website")
 
         Comment.objects.create(
             blog_id=blog.id,
-            user=request.user,
+            user_id=request.user.id,
             name=name,
             email=email,
             comment=comment,
-            website=website,
+            web_site=web_site,
         )
 
         return redirect('single', blog.slug)
@@ -65,9 +67,5 @@ def single(request, slug):
 
 def grid(request):
     blogs = Blog.objects.all().order_by('-id')
-
-    context = {
-        'blogs': blogs,
-        }
     
-    return render(request, 'blog-grid.html', context)
+    return render(request, 'blog-grid.html', {'blogs': blogs})

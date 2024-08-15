@@ -19,7 +19,7 @@
                   </div>
                   <div class="post-meta">
                     <ul class="list-unstyled mb-0">
-                      <li class="author">By:<a href="{% url 'single' blog.slug %}">{{ user.get_full_name }}</a></li>
+                      <li class="author">By:<a href="{% url 'single' blog.slug %}">{{ blog.user.get_full_name }}</a></li>
                       <li class="date">Date:<a href="{% url 'single' blog.slug %}">{{ blog.created_at|date }}</a></li>
                     </ul>
                   </div>
