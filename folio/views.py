@@ -66,6 +66,6 @@ def single(request, slug):
     return render(request, 'blog-single.html', context)
 
 def grid(request):
-    blogs = Blog.objects.all().order_by('-id')
+    blogs = Blog.objects.all()
     
-    return render(request, 'blog-grid.html', {'blogs': blogs})
+    return render(request, 'blog-grid.html', {'blogs': blogs.order_by('-id')})
