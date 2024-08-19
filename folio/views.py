@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 
-from folio.models import Blog, Portfolio, Comment, User, Category, GetInTouch
+from .models import Blog, Portfolio, Comment, User, Category, GetInTouch
 
 
 def index(request):

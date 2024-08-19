@@ -24,7 +24,7 @@ class Blog(models.Model):
             
         return super().save(*args, **kwargs)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.title
     
 
@@ -33,7 +33,7 @@ class User(AbstractUser):
     biography = models.CharField(max_length=225, null=True, blank=True)
     work = models.CharField(max_length=225, null=True, blank=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.username
         
 
@@ -46,14 +46,14 @@ class Comment(models.Model):
     comment = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
     
 
 class Category(models.Model):
     title = models.CharField(max_length=225, null=True, blank=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.title
     
 
@@ -61,7 +61,7 @@ class Portfolio(models.Model):
     category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True, blank=True)
     image = models.ImageField(upload_to="PortfolioPhotos/", null=True, blank=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return f"{self.category}"
     
 
@@ -72,6 +72,6 @@ class GetInTouch(models.Model):
     message = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
-    def __str__(self) -> str:
+    def __str__(self):
         return self.name
     
